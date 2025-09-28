@@ -1,0 +1,37 @@
+# .editorconfig
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+
+# Python sticks to 4 spaces; editors that honor max_line_length will show guides at 100
+[*.py]
+indent_size = 4
+max_line_length = 100
+
+# YAML/JSON/TOML/INI typically 2
+[*.{yml,yaml,json,toml,ini}]
+indent_size = 2
+
+# Markdown often uses two trailing spaces for line breaks → don't auto-trim them
+[*.md]
+trim_trailing_whitespace = false
+
+# Shell scripts (mostly 2); keep LF
+[*.sh]
+indent_size = 2
+end_of_line = lf
+
+# Makefiles require tabs
+[Makefile]
+indent_style = tab
+
+# Optional: web files
+[*.{js,jsx,ts,tsx,css,html}]
+indent_size = 2
+
