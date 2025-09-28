@@ -24,7 +24,8 @@ jobs:
           python-version: "3.12"
           cache: "pip"
       - run: python3 -m pip install -U pip
-      - run: pip install -e ".[dev]"
+      - run: pip install -r requirements.txt
+      - run: pip install -r requirements-dev.txt
       - run: pre-commit run --all-files
 
 tests:
@@ -38,6 +39,7 @@ tests:
         python-version: "3.12"
         cache: "pip"
     - run: python3 -m pip install -U pip
-    - run: pip install -e ".[dev]"
+    - run: pip install -r requirements.txt
+    - run: pip install -r requirements-dev.txt
     - run: pytest -q
 
