@@ -1,0 +1,62 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "portent"
+version = "0.1.0"
+description = "Portent: a Discord bot built slash-first with same ops as Harbinger"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{ name = "notoriouslogank" }]
+dependencies = [
+	"discord.py>=2.4, <3",
+	"aiohttp>=3.9",
+]
+
+[project.optional-dependencies]
+dev = [
+	"pytest>=8.3",
+	"pre-commit>=3.8",
+	"ruff>=0.6.8",
+	"black>=24.8",
+	"isort>=5.13",
+	"commitizen>=3.27",
+	"detect-secrets>=1.5",
+]
+
+[project.scripts]
+# portent = "portent.bot:main"
+
+[tool.black]
+line-length = 100
+target-version = ["py311", "py312"]
+skip-string-normalization = false
+
+[tool.isort]
+profile = "black"
+line_length = 100
+known_first_party = ["portent"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "UP", "B"]
+ignore = ["E203"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S101"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "0.1.0"
+tag_format = "v$version"
+update_changelog_on_bump = true
+
